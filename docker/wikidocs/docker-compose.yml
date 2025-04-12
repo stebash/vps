@@ -1,3 +1,9 @@
+volumes:
+  wikidocs_data:
+    external: true
+networks:
+  reverse-proxy:
+    external: true
 services:
   wikidocs:
     image: zavy86/wikidocs
@@ -13,7 +19,5 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - wikidocs_data:/data
-    networks:
-      - reverse-proxy
     ports:
       - 83:80
