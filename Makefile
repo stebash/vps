@@ -10,7 +10,8 @@ define docker_rebuild
 endef
 # Initialization
 init:
-	docker network create --driver bridge reverse-proxy
+	# docker network create --driver bridge reverse-proxy
+	@docker network inspect reverse-proxy >/dev/null 2>&1 && echo "Network reverse-proxy already exists" || (echo "Creating network reverse-proxy" && docker network create --driver bridge reverse-proxy)
 # Portainer
 portainer:
 	docker volume create portainer_data
