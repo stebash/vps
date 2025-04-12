@@ -33,3 +33,7 @@ glances:
 # IT Tools
 it-tools:
 	$(call docker_rebuild,"it-tools","docker/it-tools")
+# Wikidocs
+wikidocs:
+	docker volume create wikidocs-datasets
+	$(call docker_rebuild,"wikidocs","docker/wikidocs")
